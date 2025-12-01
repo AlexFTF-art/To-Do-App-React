@@ -32,8 +32,11 @@ function App() {
 
   }
 
+  const orderedTasks = [...tasks].sort((a, b) => a.complete - b.complete);
+  const filterTasks = orderedTasks.filter(t => t.text.toLowerCase().includes(filter.toLowerCase()));
 
   return (
+
     <>
       <div>
 
@@ -55,9 +58,15 @@ function App() {
 
         <button>Eliminar Tareas Completadas</button>
 
-        {/* Contenedor */}
-        <div></div>
-
+        {/* Contenedor agregar map y classname*/}
+        <div>
+          {filterTasks.map((t) => (
+            <div key={t.id} className={`task ${t.complete ? "completada" : ""}`}
+              style={{backgroundColor: t.color}}>
+              {t.text}  
+            </div>
+          ))}
+        </div>
       </div>
     </>
   )
