@@ -13,6 +13,26 @@ function App() {
   const [filter, setFilter] = useState("");
 
 
+  const addTask = () => {
+    if(!newTask.trim()) return;
+
+    const newT = {
+      id: Date.now(),
+      text: newTask,
+      complete: false,
+      color: "#ffffff"
+    }
+
+    const updated = [...tasks, newT];
+
+    setTasks(updated);
+
+    localStorage.setItem("tasks", JSON.stringify(updated));
+    setNewTask("");
+
+  }
+
+
   return (
     <>
       <div>
@@ -24,7 +44,7 @@ function App() {
         <div>
           <input type="text" placeholder='Escribe una Tarea' value={newTask}
             onChange={(e) => setNewTask(e.target.value)}/>
-          <button>Agregar</button>
+          <button onClick={addTask}>Agregar</button>
         </div>
 
         {/* Filter */}
