@@ -1,12 +1,12 @@
 import { useState } from 'react'
-
 import './App.css'
+import TaskItem from './components/TaskItem';
 
 function App() {
 
   const [tasks, setTasks] = useState(() => {
-    const saved = localStorage.getItem("tasks");
-    return saved ? JSON.parse(saved) : [];
+    const savedT = localStorage.getItem("tasks");
+    return savedT ? JSON.parse(savedT) : [];
   });
 
   const [newTask, setNewTask] = useState("");
@@ -24,12 +24,16 @@ function App() {
     }
 
     const updated = [...tasks, newT];
-
     setTasks(updated);
-
     localStorage.setItem("tasks", JSON.stringify(updated));
     setNewTask("");
 
+  }
+
+  const toggleComplete = (id) => {
+    const updatedTasks = tasks.map((t) => t.id === id ? {...t, complete: !t.complete} : t);
+    setTasks(updatedTasks);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   }
 
   const orderedTasks = [...tasks].sort((a, b) => a.complete - b.complete);
@@ -60,11 +64,8 @@ function App() {
 
         {/* Contenedor agregar map y classname*/}
         <div>
-          {filterTasks.map((t) => (
-            <div key={t.id} className={`task ${t.complete ? "completada" : ""}`}
-              style={{backgroundColor: t.color}}>
-              {t.text}  
-            </div>
+          {filterTasks.map((task) => (
+           <TaskItem key={task.id} task={task} toggleComplete={toggleComplete}/>
           ))}
         </div>
       </div>
