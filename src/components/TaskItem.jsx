@@ -4,10 +4,16 @@ const TaskItem = ({ task, toggleComplete, deleteTask }) => {
   return (
     <div
       className={`task ${task.complete ? "completada" : ""}`}
-      style={{ backgroundColor: task.color }}
-      onClick={() => toggleComplete(task.id)}
+      style={{ backgroundColor: "#000000"}}
     >
-      <span>
+      <input 
+        type="checkbox"
+        checked={task.complete}
+        onChange={() => toggleComplete(task.id)}
+      />
+      <span onClick={() => toggleComplete(task.id)}
+        style={{cursor: "pointer"}}  
+      >
         {task.text}
       </span>
       

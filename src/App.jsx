@@ -42,6 +42,12 @@ function App() {
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   }
 
+  const deleteCompleteTasks = () => {
+    const updatedTasks = tasks.filter(t => !t.complete);
+    setTasks(updatedTasks);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+  }
+
   const orderedTasks = [...tasks].sort((a, b) => a.complete - b.complete);
   const filterTasks = orderedTasks.filter(t => t.text.toLowerCase().includes(filter.toLowerCase()));
 
@@ -66,7 +72,7 @@ function App() {
             onChange={(e) => setFilter(e.target.value)}/>
         </div>
 
-        <button>Eliminar Tareas Completadas</button>
+        <button onClick={deleteCompleteTasks}>Eliminar Tareas Completadas</button>
 
         {/* Contenedor agregar map y classname*/}
         <div>
