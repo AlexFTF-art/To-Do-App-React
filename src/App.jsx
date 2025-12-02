@@ -48,6 +48,13 @@ function App() {
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   }
 
+  const changeColor = (id, color) => {
+    const updatedTasks = tasks.map(t => 
+      t.id === id ? {...t, color: color } : t);
+      setTasks(updatedTasks);
+      localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+  }
+
   const orderedTasks = [...tasks].sort((a, b) => a.complete - b.complete);
   const filterTasks = orderedTasks.filter(t => t.text.toLowerCase().includes(filter.toLowerCase()));
 
@@ -82,6 +89,7 @@ function App() {
             task={task} 
             toggleComplete={toggleComplete}
             deleteTask={deleteTask}
+            changeColor={changeColor}
            />
           ))}
         </div>
