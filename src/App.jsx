@@ -36,6 +36,12 @@ function App() {
     localStorage.setItem("tasks", JSON.stringify(updatedTasks));
   }
 
+  const deleteTask = (id) => {
+    const updatedTasks = tasks.filter(t => t.id !== id);
+    setTasks(updatedTasks);
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+  }
+
   const orderedTasks = [...tasks].sort((a, b) => a.complete - b.complete);
   const filterTasks = orderedTasks.filter(t => t.text.toLowerCase().includes(filter.toLowerCase()));
 
@@ -65,7 +71,12 @@ function App() {
         {/* Contenedor agregar map y classname*/}
         <div>
           {filterTasks.map((task) => (
-           <TaskItem key={task.id} task={task} toggleComplete={toggleComplete}/>
+           <TaskItem 
+            key={task.id} 
+            task={task} 
+            toggleComplete={toggleComplete}
+            deleteTask={deleteTask}
+           />
           ))}
         </div>
       </div>
