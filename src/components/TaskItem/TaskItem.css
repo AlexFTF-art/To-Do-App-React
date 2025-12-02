@@ -1,0 +1,39 @@
+.task-item {
+  max-width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  margin: 5px auto;
+  border-radius: 10px;
+  color: #ffffff;
+}
+
+.task-completed {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.task-text {
+  flex-grow: 1;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.btn-delete {
+  margin-left: 10px;
+  background-color: #ff1a1a;
+  border: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn-delete:hover {
+  background-color: #ff1a1a;
+}
+
+.pick-color {
+  margin-left: 10px;
+  cursor: pointer;
+}

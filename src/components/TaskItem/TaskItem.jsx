@@ -1,10 +1,9 @@
-
-
+import "./TaskItem.css";
 
 const TaskItem = ({ task, toggleComplete, deleteTask, changeColor }) => {
   return (
     <div
-      className={`task ${task.complete ? "completada" : ""}`}
+      className={`task-item ${task.complete ? "task-completed" : ""}`}
       style={{ backgroundColor: task.color}}
     >
       <input 
@@ -13,19 +12,23 @@ const TaskItem = ({ task, toggleComplete, deleteTask, changeColor }) => {
         onChange={() => toggleComplete(task.id)}
       />
       
-      <span onClick={() => toggleComplete(task.id)}
-        style={{cursor: "pointer"}}  
+      <span 
+        className="task-text"  
+        onClick={() => toggleComplete(task.id)}
       >
         {task.text}
       </span>
 
       <input 
         type="color"
+        className="pick-color"
         value={task.color}
         onChange={(e) => changeColor(task.id, e.target.value)}
       />
       
-      <button onClick={(e) => {
+      <button 
+        className="btn-delete"
+        onClick={(e) => {
         e.stopPropagation();
         deleteTask(task.id);
       }}>X</button>

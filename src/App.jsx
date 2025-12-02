@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import './App.css'
-import TaskItem from './components/TaskItem';
+import TaskItem from './components/TaskItem/TaskItem';
+import AddTask from './components/AddTask/AddTask';
+import SearchTask from './components/Filter/SearchTask';
+import DeleteCompBtn from './components/DeleteBtn/DeleteCompBtn';
 
 function App() {
 
@@ -67,19 +70,21 @@ function App() {
 
 
         {/* NewTask */}
-        <div>
-          <input type="text" placeholder='Escribe una Tarea' value={newTask}
-            onChange={(e) => setNewTask(e.target.value)}/>
-          <button onClick={addTask}>Agregar</button>
-        </div>
+        <AddTask
+          newTask={newTask}
+          setNewTask={setNewTask}
+          addTask={addTask}
+        />
 
         {/* Filter */}
-        <div>
-          <input type="text" placeholder='Buscar Tareas' value={filter} 
-            onChange={(e) => setFilter(e.target.value)}/>
-        </div>
+        <SearchTask
+          filter={filter}
+          setFilter={setFilter}
+        />
 
-        <button onClick={deleteCompleteTasks}>Eliminar Tareas Completadas</button>
+        <DeleteCompBtn 
+          deleteCompleteTasks={deleteCompleteTasks}
+        />
 
         {/* Contenedor agregar map y classname*/}
         <div>

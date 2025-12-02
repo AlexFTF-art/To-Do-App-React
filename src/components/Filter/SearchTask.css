@@ -1,0 +1,12 @@
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.container-input-search {
+  padding: 8px;
+  width: 250px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
