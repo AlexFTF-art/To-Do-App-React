@@ -1,39 +1,122 @@
 .task-item {
+  width: 100%;
   max-width: 400px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  margin: 5px auto;
-  border-radius: 10px;
-  color: #ffffff;
+  gap: 10px;
+  padding: 10px 8px;
+  border-radius: 25px;
+  background-color: var(--task-color, #ffffff);
+  border: 1px solid rgba(15, 23, 42, 0.05);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+  transition: transform 0.15s ease, box-shadow 0.18s ease;
 }
 
-.task-completed {
-  text-decoration: line-through;
-  opacity: 0.6;
+.task-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.14);
+}
+
+.task-checkbox {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: #22c55e;
+}
+
+.task-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  cursor: pointer;
 }
 
 .task-text {
-  flex-grow: 1;
-  margin-left: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #0f172a;
+  word-break: break-word;
+}
+
+.task-completed {
+  opacity: 0.7;
+}
+
+.task-completed .task-text {
+  text-decoration: line-through;
+  color: #6b7280;
+}
+
+.task-status {
+  align-self: flex-start;
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 500;
+}
+
+.status-pending {
+  background-color: rgba(34, 197, 94, 0.15);
+  color: #15803d;
+}
+
+.status-done {
+  background-color: rgba(148, 163, 184, 0.22);
+  color: #475569;
+}
+
+
+.task-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.task-accent-bar {
+  width: 5px;
+  height: 100%;
+  border-radius: 8px;
+  background-color: currentColor;
+  opacity: 0.6;
+}
+
+.pick-color-hidden {
+  display: none;
+}
+
+.color-icon {
+  font-size: 1.1rem;
   cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  transition: background 0.15s ease;
+}
+
+.color-icon:hover {
+  background-color: rgba(15, 23, 42, 0.08);
 }
 
 .btn-delete {
-  margin-left: 10px;
-  background-color: #ff1a1a;
+  padding: 4px 8px;
   border: none;
+  border-radius: 50%;
+  background-color: #f87171;
   color: white;
   cursor: pointer;
-  border-radius: 5px;
+  font-size: 0.8rem;
+  transition: background 0.15s ease, transform 0.1s ease;
 }
 
 .btn-delete:hover {
-  background-color: #ff1a1a;
+  background-color: #ef4444;
+  transform: scale(1.05);
 }
 
-.pick-color {
-  margin-left: 10px;
-  cursor: pointer;
+/* Responsive */
+@media (max-width: 480px) {
+  .task-item {
+    max-width: 100%;
+  }
 }
